@@ -81,12 +81,13 @@ pointer-events: none;
 }
 
 .hero p {
-font-size: 1.75rem;
-font-weight: 500;
-opacity: 0;
-margin-bottom: 45px;
-letter-spacing: 2px;
-animation: textFadeIn 1s ease forwards 1.8s;
+    font-size: 1.75rem;
+    font-weight: 500;
+    margin-top: 10px;
+    margin-bottom: 45px;
+    letter-spacing: 2px;
+    opacity: 0;
+    animation: textFadeIn 1s ease forwards 1.8s;
 }
 
 .enter-button {
