@@ -92,3 +92,74 @@ transform: translateY(-3px);
 min-height: 100vh;
 background: #050505;
 }
+
+/* CINEMATIC INTRO */
+
+.background-video {
+opacity: 0;
+animation: cityFadeIn 1.8s ease forwards;
+}
+
+.hero-content h1 {
+opacity: 0;
+animation: titleFadeIn 1.2s ease forwards;
+animation-delay: 1.2s;
+}
+
+.hero-content p {
+opacity: 0;
+animation: textFadeIn 1s ease forwards;
+animation-delay: 1.8s;
+}
+
+.enter-button {
+opacity: 0;
+animation: buttonFadeIn 1s ease forwards;
+animation-delay: 2.4s;
+}
+
+@keyframes cityFadeIn {
+from {
+opacity: 0;
+}
+
+to {
+opacity: 1;
+}
+}
+
+@keyframes titleFadeIn {
+from {
+opacity: 0;
+transform: translateY(18px);
+}
+
+to {
+opacity: 1;
+transform: translateY(0);
+}
+}
+
+@keyframes textFadeIn {
+from {
+opacity: 0;
+transform: translateY(12px);
+}
+
+to {
+opacity: 0.95;
+transform: translateY(0);
+}
+}
+
+@keyframes buttonFadeIn {
+from {
+opacity: 0;
+transform: translateY(12px);
+}
+
+to {
+opacity: 1;
+transform: translateY(0);
+}
+}
