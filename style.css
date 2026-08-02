@@ -260,7 +260,8 @@ z-index: 1;
 
     justify-content:flex-end;
 
-    align-items:center;
+    align-items:flex-start;
+    padding-top:14vh;
 
     padding-right:10%;
 
@@ -268,7 +269,7 @@ z-index: 1;
 
 .artist-text{
 
-    max-width:520px;
+    max-width:650px;
 
     color:white;
 
@@ -276,9 +277,9 @@ z-index: 1;
 
 .artist-text h2{
 
-    font-size:3.8rem;
+    font-size:5rem;
 
-    margin-bottom:18px;
+    margin-bottom:24px;
 
     letter-spacing:2px;
 
@@ -286,13 +287,13 @@ z-index: 1;
 
 .artist-text h3{
 
-    font-size:2rem;
+    font-size:2.5rem;
 
     font-style:italic;
 
     font-weight:400;
 
-    margin-bottom:40px;
+    margin-bottom:50px;
 
     color:#ffffff;
 
@@ -300,11 +301,11 @@ z-index: 1;
 
 .artist-text p{
 
-    font-size:1.25rem;
+    font-size:1.45rem;
 
-    line-height:1.9;
+    line-height:2;
 
-    margin-bottom:22px;
+    margin-bottom:28px;
 
     opacity:.92;
 
@@ -314,9 +315,11 @@ z-index: 1;
 
     display:inline-block;
 
-    margin-top:25px;
+    margin-top:40px;
 
-    padding:18px 42px;
+    padding:22px 52px;
+
+    font-size:1.2rem;
 
     border:2px solid #ff00ff;
 
