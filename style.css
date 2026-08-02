@@ -81,7 +81,8 @@ pointer-events: none;
 }
 
 .hero p {
-font-size: 1.4rem;
+font-size: 1.75rem;
+font-weight: 500;
 opacity: 0;
 margin-bottom: 45px;
 letter-spacing: 2px;
@@ -90,7 +91,7 @@ animation: textFadeIn 1s ease forwards 1.8s;
 
 .enter-button {
 display: inline-block;
-padding: 18px 44px;
+padding: 22px 48px;
 border: 2px solid #ff00ff;
 color: white;
 text-decoration: none;
