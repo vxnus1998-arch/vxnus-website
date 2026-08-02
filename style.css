@@ -174,3 +174,31 @@ opacity: 0;
 opacity: 0.45;
 }
 }
+
+.enter-button {
+display: inline-flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+gap: 6px;
+}
+
+.enter-button .arrow {
+display: block;
+font-size: 1.6rem;
+line-height: 1;
+animation: arrowBounce 2.2s ease-in-out infinite;
+}
+
+@keyframes arrowBounce {
+0%,
+100% {
+transform: translateY(0);
+opacity: 0.75;
+}
+
+50% {
+transform: translateY(6px);
+opacity: 1;
+}
+}
