@@ -90,19 +90,26 @@ animation: textFadeIn 1s ease forwards 1.8s;
 }
 
 .enter-button {
-display: inline-block;
-padding: 22px 48px;
-border: 2px solid #ff00ff;
-color: white;
-text-decoration: none;
-border-radius: 6px;
-background: rgba(255, 0, 255, 0.15);
-transition:
-background 0.35s ease,
-box-shadow 0.35s ease,
-transform 0.35s ease;
-opacity: 0;
-animation: buttonFadeIn 1s ease forwards 2.4s;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+
+    margin-top: 20px;
+
+    padding: 22px 60px;
+    border: 2px solid #ff00ff;
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    background: rgba(255, 0, 255, 0.15);
+    transition:
+        background 0.35s ease,
+        box-shadow 0.35s ease,
+        transform 0.35s ease;
+    opacity: 0;
+    animation: buttonFadeIn 1s ease forwards 2.4s;
 }
 
 .enter-button:hover {
