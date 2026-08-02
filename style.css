@@ -163,3 +163,31 @@ opacity: 1;
 transform: translateY(0);
 }
 }
+
+/* SUBTLE LOGO PULSE */
+
+.hero h1 {
+animation:
+titleFadeIn 1.2s ease forwards 1.2s,
+logoPulse 4s ease-in-out infinite 3s;
+}
+
+@keyframes logoPulse {
+0% {
+text-shadow:
+0 0 15px rgba(255, 255, 255, 0.55),
+0 0 35px rgba(255, 0, 255, 0.3);
+}
+
+50% {
+text-shadow:
+0 0 22px rgba(255, 255, 255, 0.8),
+0 0 60px rgba(255, 0, 255, 0.65);
+}
+
+100% {
+text-shadow:
+0 0 15px rgba(255, 255, 255, 0.55),
+0 0 35px rgba(255, 0, 255, 0.3);
+}
+}
