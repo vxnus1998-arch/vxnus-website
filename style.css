@@ -344,3 +344,52 @@ z-index: 1;
         0 0 60px #ff00ff;
 
 }
+
+/* THE ARTIST TEXT ANIMATIONS */
+
+.artist-text h2,
+.artist-text h3,
+.artist-text p,
+.discover-button {
+opacity: 0;
+transform: translateY(24px);
+transition:
+opacity 0.9s ease,
+transform 0.9s ease;
+}
+
+.artist-section.is-visible .artist-text h2 {
+opacity: 1;
+transform: translateY(0);
+transition-delay: 0.3s;
+}
+
+.artist-section.is-visible .artist-text h3 {
+opacity: 1;
+transform: translateY(0);
+transition-delay: 0.6s;
+}
+
+.artist-section.is-visible .artist-text p:nth-of-type(1) {
+opacity: 1;
+transform: translateY(0);
+transition-delay: 0.9s;
+}
+
+.artist-section.is-visible .artist-text p:nth-of-type(2) {
+opacity: 1;
+transform: translateY(0);
+transition-delay: 1.2s;
+}
+
+.artist-section.is-visible .artist-text p:nth-of-type(3) {
+opacity: 1;
+transform: translateY(0);
+transition-delay: 1.5s;
+}
+
+.artist-section.is-visible .discover-button {
+opacity: 1;
+transform: translateY(0);
+transition-delay: 1.8s;
+}
