@@ -157,6 +157,7 @@ if (storySection && storyIntro && storyLoop) {
 
                 if (entry.isIntersecting) {
 
+                    storySection.classList.add("is-visible");
     // Trigger all Story CSS animations
     storySection.classList.add("is-visible");
 
@@ -164,24 +165,33 @@ if (storySection && storyIntro && storyLoop) {
 
         storyStarted = true;
 
+                    if (!storyStarted) {
         storyIntro.currentTime = 0;
         storyIntro.play().catch(() => {});
 
+                        storyStarted = true;
+                        startStorySequence();
     } else if (crossfadeStarted) {
 
+                    } else if (crossfadeStarted) {
         storyLoop.play().catch(() => {});
 
+                        storyLoop.play().catch(() => {});
     } else {
 
+                    } else {
         storyIntro.play().catch(() => {});
 
+                        storyIntro.play().catch(() => {});
     }
 
 } else {
 
+                    }
     storyIntro.pause();
     storyLoop.pause();
 
+                } else {
 }
 
                     storyIntro.pause();
