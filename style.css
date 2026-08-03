@@ -1,804 +1,694 @@
-/* ==========================================
-   GLOBAL
-========================================== */
-
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+margin: 0;
+padding: 0;
+box-sizing: border-box;
 }
 
 html {
-    scroll-behavior: smooth;
+scroll-behavior: smooth;
 }
 
 body {
-    margin: 0;
-    background: black;
-    color: white;
-    font-family: Arial, Helvetica, sans-serif;
-    overflow-x: hidden;
+margin: 0;
+background: black;
+color: white;
+font-family: Arial, Helvetica, sans-serif;
+overflow-x: hidden;
 }
 
-
-/* ==========================================
-   HERO
-========================================== */
-
 .hero {
-    position: relative;
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-    background: black;
+position: relative;
+width: 100%;
+height: 100vh;
+display: flex;
+justify-content: center;
+align-items: center;
+overflow: hidden;
+background: black;
 }
 
 .background-video {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    z-index: 0;
-    opacity: 0;
-    animation: cityFadeIn 1.8s ease forwards;
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+object-fit: cover;
+z-index: 0;
+opacity: 0;
+animation: cityFadeIn 1.8s ease forwards;
 }
 
 .overlay {
-    position: absolute;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.45);
-    z-index: 1;
+position: absolute;
+top: 0;
+right: 0;
+bottom: 0;
+left: 0;
+background: rgba(0, 0, 0, 0.45);
+z-index: 1;
 }
 
 .hero-content {
-    position: relative;
-    z-index: 2;
-    text-align: center;
+position: relative;
+z-index: 2;
+text-align: center;
 }
 
 .hero h1 {
-    position: relative;
-    font-size: 7rem;
-    letter-spacing: 14px;
-    margin-bottom: 20px;
-    opacity: 0;
-
-    animation:
-        titleFadeIn 1.2s ease forwards 1.2s;
-
-    text-shadow:
-        0 0 16px rgba(255, 255, 255, 0.6),
-        0 0 40px rgba(255, 0, 255, 0.4);
+position: relative;
+font-size: 7rem;
+letter-spacing: 14px;
+margin-bottom: 20px;
+opacity: 0;
+animation: titleFadeIn 1.2s ease forwards 1.2s;
+text-shadow:
+0 0 16px rgba(255, 255, 255, 0.6),
+0 0 40px rgba(255, 0, 255, 0.4);
 }
 
 .hero h1::after {
-    content: "VXNUS";
-    position: absolute;
-    inset: 0;
-    color: transparent;
-
-    text-shadow:
-        0 0 26px rgba(255, 255, 255, 0.5),
-        0 0 60px rgba(255, 0, 255, 0.6);
-
-    opacity: 0;
-    animation: logoGlow 4s ease-in-out infinite 3s;
-    pointer-events: none;
+content: "VXNUS";
+position: absolute;
+inset: 0;
+color: transparent;
+text-shadow:
+0 0 26px rgba(255, 255, 255, 0.5),
+0 0 60px rgba(255, 0, 255, 0.6);
+opacity: 0;
+animation: logoGlow 4s ease-in-out infinite 3s;
+pointer-events: none;
 }
 
 .hero p {
-    font-size: 1.75rem;
-    font-weight: 500;
-    margin-top: 10px;
-    margin-bottom: 45px;
-    letter-spacing: 2px;
-    opacity: 0;
-    animation: textFadeIn 1s ease forwards 1.8s;
+    font-size: 1.75rem;
+    font-weight: 500;
+    margin-top: 10px;
+    margin-bottom: 45px;
+    letter-spacing: 2px;
+    opacity: 0;
+    animation: textFadeIn 1s ease forwards 1.8s;
 }
 
 .enter-button {
-    display: inline-flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 6px;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
 
-    margin-top: 20px;
-    padding: 22px 60px;
+    margin-top: 20px;
 
-    border: 2px solid #ff00ff;
-    border-radius: 6px;
-
-    color: white;
-    text-decoration: none;
-
-    background: rgba(255, 0, 255, 0.15);
-
-    opacity: 0;
-    animation: buttonFadeIn 1s ease forwards 2.4s;
-
-    transition:
-        background 0.35s ease,
-        box-shadow 0.35s ease,
-        transform 0.35s ease;
+    padding: 22px 60px;
+    border: 2px solid #ff00ff;
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    background: rgba(255, 0, 255, 0.15);
+    transition:
+        background 0.35s ease,
+        box-shadow 0.35s ease,
+        transform 0.35s ease;
+    opacity: 0;
+    animation: buttonFadeIn 1s ease forwards 2.4s;
 }
 
 .enter-button:hover {
-    background: #ff00ff;
-
-    box-shadow:
-        0 0 20px #ff00ff,
-        0 0 60px #ff00ff;
-
-    transform: translateY(-3px);
+background: #ff00ff;
+box-shadow:
+0 0 20px #ff00ff,
+0 0 60px #ff00ff;
+transform: translateY(-3px);
 }
 
-.enter-button .arrow {
-    display: block;
-    font-size: 1.6rem;
-    line-height: 1;
-    animation: arrowBounce 2.2s ease-in-out infinite;
+#about {
+min-height: 100vh;
+background: #050505;
 }
-
-
-/* ==========================================
-   HERO ANIMATIONS
-========================================== */
 
 @keyframes cityFadeIn {
-    from {
-        opacity: 0;
-    }
+from {
+opacity: 0;
+}
 
-    to {
-        opacity: 1;
-    }
+to {
+opacity: 1;
+}
 }
 
 @keyframes titleFadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(18px);
-    }
+from {
+opacity: 0;
+transform: translateY(18px);
+}
 
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+to {
+opacity: 1;
+transform: translateY(0);
+}
 }
 
 @keyframes textFadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(12px);
-    }
+from {
+opacity: 0;
+transform: translateY(12px);
+}
 
-    to {
-        opacity: 0.95;
-        transform: translateY(0);
-    }
+to {
+opacity: 0.95;
+transform: translateY(0);
+}
 }
 
 @keyframes buttonFadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(12px);
-    }
+from {
+opacity: 0;
+transform: translateY(12px);
+}
 
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+to {
+opacity: 1;
+transform: translateY(0);
+}
 }
 
 @keyframes logoGlow {
-    0%,
-    100% {
-        opacity: 0;
-    }
+0%,
+100% {
+opacity: 0;
+}
 
-    50% {
-        opacity: 0.45;
-    }
+50% {
+opacity: 0.45;
+}
+}
+
+.enter-button {
+display: inline-flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+gap: 6px;
+}
+
+.enter-button .arrow {
+display: block;
+font-size: 1.6rem;
+line-height: 1;
+animation: arrowBounce 2.2s ease-in-out infinite;
 }
 
 @keyframes arrowBounce {
-    0%,
-    100% {
-        transform: translateY(0);
-        opacity: 0.75;
-    }
-
-    50% {
-        transform: translateY(6px);
-        opacity: 1;
-    }
+0%,
+100% {
+transform: translateY(0);
+opacity: 0.75;
 }
 
-
-/* ==========================================
-   THE ARTIST
-========================================== */
-
-#about {
-    min-height: 100vh;
-    background: #050505;
+50% {
+transform: translateY(6px);
+opacity: 1;
 }
+}
+
+/* THE ARTIST SECTION */
 
 .artist-section {
-    position: relative;
-    width: 100%;
-    height: 100vh;
-    overflow: hidden;
-    background: black;
+position: relative;
+width: 100%;
+height: 100vh;
+overflow: hidden;
+background: black;
 }
 
 .artist-background-video {
-    position: absolute;
-    inset: 0;
-
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-
-    z-index: 0;
-
-    opacity: 0;
-    transition: opacity 1.8s ease;
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+object-fit: cover;
+z-index: 0;
+opacity: 0;
+transition: opacity 1.8s ease;
 }
 
 .artist-section.is-visible .artist-background-video {
-    opacity: 1;
+opacity: 1;
 }
 
 .artist-overlay {
-    position: absolute;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.28);
-    z-index: 1;
+position: absolute;
+inset: 0;
+background: rgba(0, 0, 0, 0.28);
+z-index: 1;
 }
 
-.artist-content {
-    position: relative;
-    z-index: 2;
+/* ---------- THE ARTIST CONTENT ---------- */
 
-    width: 100%;
-    height: 100%;
+.artist-content{
 
-    display: flex;
-    justify-content: flex-end;
-    align-items: flex-start;
+    position:relative;
 
-    padding-top: 14vh;
-    padding-right: 3%;
+    z-index:2;
+
+    width:100%;
+
+    height:100%;
+
+    display:flex;
+
+    justify-content:flex-end;
+
+    align-items:flex-start;
+    padding-top:14vh;
+
+    padding-right:3%;
+
 }
 
-.artist-text {
-    max-width: 650px;
-    color: white;
+.artist-text{
+
+    max-width:650px;
+
+    color:white;
+
 }
 
-.artist-text h2 {
-    font-size: 5rem;
-    margin-bottom: 24px;
-    letter-spacing: 2px;
+.artist-text h2{
+
+    font-size:5rem;
+
+    margin-bottom:24px;
+
+    letter-spacing:2px;
+
 }
 
-.artist-text h3 {
-    font-size: 2.5rem;
-    font-style: italic;
-    font-weight: 400;
-    margin-bottom: 50px;
-    color: white;
+.artist-text h3{
+
+    font-size:2.5rem;
+
+    font-style:italic;
+
+    font-weight:400;
+
+    margin-bottom:50px;
+
+    color:#ffffff;
+
 }
 
-.artist-text p {
-    font-size: 1.45rem;
-    line-height: 2;
-    margin-bottom: 28px;
-    opacity: 0.92;
+.artist-text p{
+
+    font-size:1.45rem;
+
+    line-height:2;
+
+    margin-bottom:28px;
+
+    opacity:.92;
+
 }
 
-.discover-button {
-    display: inline-block;
+.discover-button{
 
-    margin-top: 40px;
-    padding: 22px 52px;
+    display:inline-block;
 
-    font-size: 1.2rem;
+    margin-top:40px;
 
-    border: 2px solid #ff00ff;
-    border-radius: 6px;
+    padding:22px 52px;
 
-    color: white;
-    text-decoration: none;
+    font-size:1.2rem;
 
-    background: rgba(255, 0, 255, 0.12);
+    border:2px solid #ff00ff;
 
-    transition:
-        background 0.35s ease,
-        box-shadow 0.35s ease,
-        transform 0.35s ease;
+    color:white;
+
+    text-decoration:none;
+
+    border-radius:6px;
+
+    background:rgba(255,0,255,.12);
+
+    transition:.35s;
+
 }
 
-.discover-button:hover {
-    background: #ff00ff;
+.discover-button:hover{
 
-    box-shadow:
-        0 0 20px #ff00ff,
-        0 0 60px #ff00ff;
+    background:#ff00ff;
 
-    transform: translateY(-3px);
+    box-shadow:
+        0 0 20px #ff00ff,
+        0 0 60px #ff00ff;
+
 }
 
-
-/* ==========================================
-   THE ARTIST ANIMATIONS
-========================================== */
+/* THE ARTIST TEXT ANIMATIONS */
 
 .artist-text h2,
 .artist-text h3,
 .artist-text p,
 .discover-button {
-    opacity: 0;
-    transform: translateY(24px);
-
-    transition:
-        opacity 0.9s ease,
-        transform 0.9s ease;
+opacity: 0;
+transform: translateY(24px);
+transition:
+opacity 0.9s ease,
+transform 0.9s ease;
 }
 
 .artist-section.is-visible .artist-text h2 {
-    opacity: 1;
-    transform: translateY(0);
-    transition-delay: 0.3s;
+opacity: 1;
+transform: translateY(0);
+transition-delay: 0.3s;
 }
 
 .artist-section.is-visible .artist-text h3 {
-    opacity: 1;
-    transform: translateY(0);
-    transition-delay: 0.6s;
+opacity: 1;
+transform: translateY(0);
+transition-delay: 0.6s;
 }
 
 .artist-section.is-visible .artist-text p:nth-of-type(1) {
-    opacity: 1;
-    transform: translateY(0);
-    transition-delay: 0.9s;
+opacity: 1;
+transform: translateY(0);
+transition-delay: 0.9s;
 }
 
 .artist-section.is-visible .artist-text p:nth-of-type(2) {
-    opacity: 1;
-    transform: translateY(0);
-    transition-delay: 1.2s;
+opacity: 1;
+transform: translateY(0);
+transition-delay: 1.2s;
 }
 
 .artist-section.is-visible .artist-text p:nth-of-type(3) {
-    opacity: 1;
-    transform: translateY(0);
-    transition-delay: 1.5s;
+opacity: 1;
+transform: translateY(0);
+transition-delay: 1.5s;
 }
 
 .artist-section.is-visible .discover-button {
-    opacity: 1;
-    transform: translateY(0);
-    transition-delay: 1.8s;
+opacity: 1;
+transform: translateY(0);
+transition-delay: 1.8s;
 }
 
+/* ===========================
+   MOBILE
+=========================== */
+
+@media (max-width: 768px){
+
+.hero h1{
+    font-size: 3.8rem;
+    letter-spacing: 6px;
+}
+
+.hero p{
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+    margin-bottom: 32px;
+}
+
+.enter-button{
+    padding:18px 42px;
+    font-size:1rem;
+}
+
+}
+
+/* MOBILE ARTIST SECTION */
+
+@media screen and (max-width: 768px) {
+
+.artist-section{
+    height:100svh;
+    overflow:hidden;
+}
+
+.artist-background-video{
+    object-fit:cover;
+    object-position:28% center;
+}
+
+.artist-overlay{
+    background:
+    linear-gradient(
+        to bottom,
+        rgba(0,0,0,.08) 0%,
+        rgba(0,0,0,.18) 45%,
+        rgba(0,0,0,.45) 100%
+    );
+}
+
+.artist-content{
+    position:relative;
+    z-index:2;
+
+    width:100%;
+    height:100%;
+
+    display:flex;
+    justify-content:flex-end;
+    align-items:flex-start;
+
+    padding-top:14vh;
+    padding-right:24px;
+    padding-left:24px;
+}
+
+.artist-text{
+    width:52%;
+    max-width:260px;
+    margin-left:auto;
+    text-align:left;
+}
+
+.artist-text h2{
+    font-size:3.1rem;
+    line-height:1;
+    margin-bottom:16px;
+}
+
+.artist-text h3{
+    font-size:2rem;
+    line-height:1.3;
+    margin-bottom:28px;
+}
+
+.artist-text p{
+    font-size:1.2rem;
+    line-height:1.7;
+    margin-bottom:18px;
+}
+
+.discover-button{
+    display:block;
+    width:100%;
+    margin-top:28px;
+    padding:18px 20px;
+    text-align:center;
+    font-size:1.1rem;
+}
+
+}
 
 /* ==========================================
-   THE STORY IMAGINED
+   STORY IMAGINED
 ========================================== */
 
-.story-section {
-    position: relative;
-
-    width: 100%;
-    height: 100vh;
-
-    overflow: hidden;
-    background: black;
+.story-section{
+    position:relative;
+    width:100%;
+    height:100vh;
+    overflow:hidden;
+    background:black;
 }
 
-.story-background-video {
-    position: absolute;
-    inset: 0;
+.story-background-video{
 
-    width: 100%;
-    height: 100%;
+    position:absolute;
+    inset:0;
 
-    object-fit: cover;
+    width:100%;
+    height:100%;
 
-    opacity: 0;
+    object-fit:cover;
 
-    transition: opacity 1.5s ease;
+    opacity:0;
+
+    transition:opacity 1.5s ease;
+
 }
 
-.story-background-video.active {
-    opacity: 0;
+.story-background-video.active{
+
+    opacity:1;
+
 }
 
-.story-section.is-visible .story-background-video.active {
-    opacity: 1;
+.story-loop{
+
+    z-index:1;
+
 }
-
-.story-loop {
-    z-index: 1;
-}
-
-.story-overlay {
-    position: absolute;
-    inset: 0;
-
-    z-index: 2;
-
-    background:
-        linear-gradient(
-            to bottom,
-            rgba(0, 0, 0, 0.16) 0%,
-            rgba(0, 0, 0, 0.03) 45%,
-            rgba(0, 0, 0, 0.12) 100%
-        );
-
-    opacity: 0;
-    transition: opacity 1.5s ease;
-}
-
-.story-section.is-visible .story-overlay {
-    opacity: 1;
-}
-
 
 /* ==========================================
-   STORY TITLE AND INSTRUCTION
+   STORY TITLE
 ========================================== */
 
-.story-content {
-    position: absolute;
+.story-content{
 
-    top: 8%;
-    left: 50%;
+    position:absolute;
 
-    transform: translateX(-50%);
+    top:8%;
 
-    width: 100%;
+    left:50%;
 
-    z-index: 4;
+    transform:translateX(-50%);
 
-    text-align: center;
-    pointer-events: none;
+    width:100%;
+
+    z-index:3;
+
+    text-align:center;
+
 }
 
-.story-content h2 {
-    font-size: 5rem;
-    letter-spacing: 3px;
-    color: white;
+.story-content h2{
 
-    text-shadow:
-        0 0 18px rgba(255, 255, 255, 0.55),
-        0 0 45px rgba(255, 0, 255, 0.35);
+    font-size:5rem;
 
-    opacity: 0;
-    transform: translateY(24px);
+    letter-spacing:3px;
 
-    transition:
-        opacity 1.2s ease,
-        transform 1.2s ease;
+    color:white;
+
+    text-shadow:
+        0 0 18px rgba(255,255,255,.55),
+        0 0 45px rgba(255,0,255,.35);
+
+    opacity:0;
+
+    transform:translateY(24px);
+
+    animation:storyTitleFade 1.4s ease forwards;
+
+    animation-delay:.8s;
+
 }
 
-.story-section.is-visible .story-content h2 {
-    opacity: 1;
-    transform: translateY(0);
-    transition-delay: 0.6s;
+@keyframes storyTitleFade{
+
+    from{
+
+        opacity:0;
+        transform:translateY(24px);
+
+    }
+
+    to{
+
+        opacity:1;
+        transform:translateY(0);
+
+    }
+
 }
 
-.story-instruction {
-    margin-top: 14px;
+/* ==========================
+   FLOATING ALBUM
+========================== */
 
-    font-size: 1.2rem;
-    letter-spacing: 1.5px;
+.album{
 
-    color: rgba(255, 255, 255, 0.88);
+    position:absolute;
 
-    text-shadow:
-        0 2px 12px rgba(0, 0, 0, 0.8),
-        0 0 20px rgba(255, 0, 255, 0.22);
+    width:240px;
+    aspect-ratio:1/1;
 
-    opacity: 0;
-    transform: translateY(18px);
+    cursor:pointer;
 
-    transition:
-        opacity 1s ease,
-        transform 1s ease;
+    animation:
+        albumFloat 5s ease-in-out infinite;
+
+    transition:
+        transform .45s ease,
+        filter .45s ease;
+
+    z-index:5;
+
 }
 
-.story-section.is-visible .story-instruction {
-    opacity: 1;
-    transform: translateY(0);
-    transition-delay: 1.2s;
-}
+/* Upper left */
 
+.creation{
 
-/* ==========================================
-   FLOATING ALBUMS
-========================================== */
+    top:22%;
+    left:9%;
 
-.album {
-    position: absolute;
-
-    width: 240px;
-    aspect-ratio: 1 / 1;
-
-    cursor: pointer;
-    text-decoration: none;
-
-    z-index: 5;
-
-    transition:
-        transform 0.45s ease,
-        filter 0.45s ease;
-}
-
-/* Creation position */
-
-.creation {
-    top: 22%;
-    left: 9%;
-
-    opacity: 0;
-    visibility: hidden;
-
-    transform:
-        translateY(24px)
-        scale(0.78);
-
-    filter:
-        brightness(3)
-        blur(8px)
-        drop-shadow(0 0 45px rgba(255, 255, 255, 1))
-        drop-shadow(0 0 85px rgba(255, 0, 255, 1));
-
-    transition:
-        opacity 0.8s ease,
-        visibility 0s linear 0.8s,
-        transform 1.2s cubic-bezier(0.2, 0.8, 0.2, 1),
-        filter 1.4s ease;
-}
-
-.creation.album-revealed {
-    opacity: 1;
-    visibility: visible;
-
-    transform:
-        translateY(0)
-        scale(1);
-
-    filter:
-        brightness(1)
-        blur(0)
-        drop-shadow(0 0 22px rgba(255, 0, 255, 0.45));
-
-    transition:
-        opacity 0.8s ease,
-        visibility 0s,
-        transform 1.2s cubic-bezier(0.2, 0.8, 0.2, 1),
-        filter 1.4s ease;
-
-    animation:
-        creationFloat 5s ease-in-out infinite 1.25s;
 }
 
 .album img,
-.album video {
-    position: absolute;
-    inset: 0;
+.album video{
 
-    width: 100%;
-    height: 100%;
+    position:absolute;
+    inset:0;
 
-    object-fit: cover;
+    width:100%;
+    height:100%;
 
-    border-radius: 12px;
+    object-fit:cover;
 
-    box-shadow:
-        0 0 35px rgba(255, 0, 255, 0.25);
-}
+    border-radius:12px;
 
-.album-image {
-    opacity: 1;
-
-    transition:
-        opacity 0.35s ease,
-        filter 0.35s ease;
-}
-
-.album-video {
-    opacity: 0;
-
-    transition:
-        opacity 0.35s ease;
-}
-
-.album:hover {
-    z-index: 20;
-
-    filter:
-        drop-shadow(0 0 18px rgba(255, 255, 255, 0.5))
-        drop-shadow(0 0 45px rgba(255, 0, 255, 0.85));
-}
-
-.creation.album-revealed:hover {
-    animation-play-state: paused;
-
-    transform:
-        translateY(-12px)
-        scale(1.12);
-}
-
-.album:hover .album-video {
-    opacity: 1;
-}
-
-.album:hover .album-image {
-    opacity: 0;
-}
-
-@keyframes creationFloat {
-    0%,
-    100% {
-        transform:
-            translateY(0)
-            scale(1);
-    }
-
-    50% {
-        transform:
-            translateY(-10px)
-            scale(1);
-    }
-}
-
-
-/* ==========================================
-   MOBILE HERO
-========================================== */
-
-@media screen and (max-width: 768px) {
-
-    .hero h1 {
-        font-size: 3.8rem;
-        letter-spacing: 6px;
-    }
-
-    .hero p {
-        font-size: 1.2rem;
-        letter-spacing: 1px;
-        margin-bottom: 32px;
-    }
-
-    .enter-button {
-        padding: 18px 42px;
-        font-size: 1rem;
-    }
+    box-shadow:
+        0 0 35px rgba(255,0,255,.25);
 
 }
 
+.album-video{
 
-/* ==========================================
-   MOBILE ARTIST
-========================================== */
+    opacity:0;
 
-@media screen and (max-width: 768px) {
-
-    .artist-section {
-        height: 100svh;
-        overflow: hidden;
-    }
-
-    .artist-background-video {
-        object-fit: cover;
-        object-position: 28% center;
-    }
-
-    .artist-overlay {
-        background:
-            linear-gradient(
-                to bottom,
-                rgba(0, 0, 0, 0.08) 0%,
-                rgba(0, 0, 0, 0.18) 45%,
-                rgba(0, 0, 0, 0.45) 100%
-            );
-    }
-
-    .artist-content {
-        position: relative;
-        z-index: 2;
-
-        width: 100%;
-        height: 100%;
-
-        display: flex;
-        justify-content: flex-end;
-        align-items: flex-start;
-
-        padding-top: 14vh;
-        padding-right: 24px;
-        padding-left: 24px;
-    }
-
-    .artist-text {
-        width: 52%;
-        max-width: 260px;
-        margin-left: auto;
-        text-align: left;
-    }
-
-    .artist-text h2 {
-        font-size: 3.1rem;
-        line-height: 1;
-        margin-bottom: 16px;
-    }
-
-    .artist-text h3 {
-        font-size: 2rem;
-        line-height: 1.3;
-        margin-bottom: 28px;
-    }
-
-    .artist-text p {
-        font-size: 1.2rem;
-        line-height: 1.7;
-        margin-bottom: 18px;
-    }
-
-    .discover-button {
-        display: block;
-        width: 100%;
-
-        margin-top: 28px;
-        padding: 18px 20px;
-
-        text-align: center;
-        font-size: 1.1rem;
-    }
+    transition:opacity .35s ease;
 
 }
 
+.album:hover{
 
-/* ==========================================
-   MOBILE STORY
-   Basic protection until final mobile polish
-========================================== */
+    transform:
+        scale(1.12)
+        translateY(-12px);
 
-@media screen and (max-width: 768px) {
+    z-index:20;
 
-    .story-section {
-        height: 100svh;
-    }
+}
 
-    .story-content {
-        top: 9%;
-        padding: 0 18px;
-    }
+.album:hover .album-video{
 
-    .story-content h2 {
-        font-size: 2.8rem;
-        line-height: 1.05;
-        letter-spacing: 1px;
-    }
+    opacity:1;
 
-    .story-instruction {
-        margin-top: 12px;
-        font-size: 1rem;
-    }
+}
 
-    .creation {
-        width: 145px;
-        top: 27%;
-        left: 6%;
-    }
+.album:hover .album-image{
+
+    opacity:0;
+
+}
+
+@keyframes albumFloat{
+
+    0%,100%{
+
+        transform:translateY(0);
+
+    }
+
+    50%{
+
+        transform:translateY(-10px);
+
+    }
 
 }
