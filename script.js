@@ -1,143 +1,227 @@
 // ==========================================
-// STANDARD BACKGROUND VIDEO CONTROLLER
+// STANDARD VIDEO CONTROLLER
 // ==========================================
 
 const standardVideos = document.querySelectorAll(
-    "video:not(#storyIntro):not(#storyLoop)"
+    "video:not(#storyIntro):not(#storyLoop)"
 );
 
-const videoObserver = new IntersectionObserver(
-    (entries) => {
-        entries.forEach((entry) => {
-            const video = entry.target;
+const videoObserver = new IntersectionObserver((entries) => {
 
-            if (entry.isIntersecting) {
-                video.play().catch(() => {});
-            } else {
-                video.pause();
-            }
-        });
-    },
-    {
-        threshold: 0.35
-    }
-);
+    entries.forEach((entry) => {
 
-standardVideos.forEach((video) => {
-    videoObserver.observe(video);
+        const video = entry.target;
+
+        if (entry.isIntersecting) {
+
+            video.play().catch(() => {});
+
+        } else {
+
+            video.pause();
+
+        }
+
+    });
+
+}, {
+
+    threshold: 0.35
+
 });
 
+standardVideos.forEach(video => {
+
+    videoObserver.observe(video);
+
+});
+
+
+
 // ==========================================
-// ARTIST SECTION FADE
+// ARTIST SECTION
 // ==========================================
 
 const artistSection = document.querySelector(".artist-section");
 
 if (artistSection) {
-    const artistObserver = new IntersectionObserver(
-        (entries) => {
-            entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                    artistSection.classList.add("is-visible");
-                }
-            });
-        },
-        {
-            threshold: 0.3
-        }
-    );
 
-    artistObserver.observe(artistSection);
+    const artistObserver = new IntersectionObserver((entries) => {
+
+        entries.forEach(entry => {
+
+            if (entry.isIntersecting) {
+
+                artistSection.classList.add("is-visible");
+
+            }
+
+        });
+
+    }, {
+
+        threshold: 0.30
+
+    });
+
+    artistObserver.observe(artistSection);
+
 }
 
+
+
 // ==========================================
-// STORY IMAGINED VIDEO SEQUENCE
+// STORY SECTION
 // ==========================================
 
 const storySection = document.querySelector(".story-section");
+
 const storyIntro = document.getElementById("storyIntro");
+
 const storyLoop = document.getElementById("storyLoop");
 
 let storyStarted = false;
-let crossfadeStarted = false;
 
-function beginStoryCrossfade() {
-    if (crossfadeStarted) return;
+let storyLoopStarted = false;
 
-    crossfadeStarted = true;
-    storyLoop.currentTime = 0;
 
-    storyLoop.play()
-        .then(() => {
-            storyLoop.classList.add("active");
-            storyIntro.classList.remove("active");
-        })
-        .catch(() => {});
+
+function startStoryLoop(){
+
+    if(storyLoopStarted) return;
+
+    storyLoopStarted = true;
+
+    storyLoop.currentTime = 0;
+
+    storyLoop.play().then(()=>{
+
+        storyLoop.classList.add("active");
+
+        storyIntro.classList.remove("active");
+
+    }).catch(()=>{});
+
 }
 
-if (storySection && storyIntro && storyLoop) {
 
-    storyIntro.addEventListener("timeupdate", () => {
-        if (
-            Number.isFinite(storyIntro.duration) &&
-            storyIntro.duration - storyIntro.currentTime <= 0.6
-        ) {
-            beginStoryCrossfade();
-        }
-    });
 
-    // Backup in case Safari misses the timeupdate threshold.
-    storyIntro.addEventListener("ended", beginStoryCrossfade);
+if(storySection){
 
-    const storyObserver = new IntersectionObserver(
-        (entries) => {
-            entries.forEach((entry) => {
+    const storyObserver = new IntersectionObserver((entries)=>{
 
-                if (entry.isIntersecting) {
+        entries.forEach(entry=>{
 
-                    if (!storyStarted) {
-                        storyStarted = true;
-                        storyIntro.currentTime = 0;
-                        storyIntro.play().catch(() => {});
-                    } else if (crossfadeStarted) {
-                        storyLoop.play().catch(() => {});
-                    } else {
-                        storyIntro.play().catch(() => {});
-                    }
+            if(entry.isIntersecting){
 
-                } else {
-                    storyIntro.pause();
-                    storyLoop.pause();
-                }
+                storySection.classList.add("is-visible");
 
-            });
-        },
-        {
-            threshold: 0.35
-        }
-    );
+                if(!storyStarted){
 
-    storyObserver.observe(storySection);
+                    storyStarted = true;
+
+                    storyIntro.currentTime = 0;
+
+                    storyIntro.play().catch(()=>{});
+
+                }
+
+                else{
+
+                    if(storyLoopStarted){
+
+                        storyLoop.play().catch(()=>{});
+
+                    }
+
+                    else{
+
+                        storyIntro.play().catch(()=>{});
+
+                    }
+
+                }
+
+            }
+
+            else{
+
+                storyIntro.pause();
+
+                storyLoop.pause();
+
+            }
+
+        });
+
+    },{
+
+        threshold:0.35
+
+    });
+
+    storyObserver.observe(storySection);
+
 }
 
-// ===== ALBUM HOVER VIDEO =====
 
-document.querySelectorAll(".album").forEach(album => {
 
-    const video = album.querySelector("video");
+storyIntro.addEventListener("timeupdate",()=>{
 
-    album.addEventListener("mouseenter", () => {
+    if(
 
-        video.currentTime = 0;
-        video.play();
+        Number.isFinite(storyIntro.duration) &&
 
-    });
+        storyIntro.duration-storyIntro.currentTime<=0.55
 
-    album.addEventListener("mouseleave", () => {
+    ){
 
-        video.pause();
-        video.currentTime = 0;
+        startStoryLoop();
 
-    });
+    }
 
 });
+
+storyIntro.addEventListener("ended",startStoryLoop);
+
+
+
+// ==========================================
+// ALBUM HOVER VIDEO
+// ==========================================
+
+document.querySelectorAll(".album").forEach(album=>{
+
+    const video = album.querySelector(".album-video");
+
+    if(!video) return;
+
+    album.addEventListener("mouseenter",()=>{
+
+        video.currentTime = 0;
+
+        video.play().catch(()=>{});
+
+    });
+
+    album.addEventListener("mouseleave",()=>{
+
+        video.pause();
+
+        video.currentTime = 0;
+
+    });
+
+});
+
+
+
+// ==========================================
+// PRELOAD STORY LOOP
+// ==========================================
+
+if(storyLoop){
+
+    storyLoop.load();
+
+}
