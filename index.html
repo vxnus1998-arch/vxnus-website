@@ -2,168 +2,131 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>VXNUS</title>
-
-    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VXNUS</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <!-- =====================================
-         HERO
-    ====================================== -->
+    <!-- HERO -->
 
-    <section class="hero">
+    <section class="hero">
 
-        <video
-            autoplay
-            muted
-            loop
-            playsinline
-            class="background-video">
+        <video autoplay muted loop playsinline class="background-video">
+            <source src="city-loop.mp4" type="video/mp4">
+        </video>
 
-            <source src="city-loop.mp4" type="video/mp4">
-        </video>
+        <div class="overlay"></div>
 
-        <div class="overlay"></div>
+        <div class="hero-content">
+            <h1>VXNUS</h1>
 
-        <div class="hero-content">
+            <p>Every Moment Tells A Story</p>
 
-            <h1>VXNUS</h1>
+            <a href="#about" class="enter-button">
+                <span>Enter New World</span>
+                <span class="arrow">&#8964;</span>
+            </a>
 
-            <p>Every Moment Tells A Story</p>
+        </div>
 
-            <a href="#about" class="enter-button">
-                <span>Enter New World</span>
-                <span class="arrow">&#8964;</span>
-            </a>
+    </section>
 
-        </div>
+    <!-- ARTIST -->
 
-    </section>
+    <section id="about" class="artist-section">
 
+        <video autoplay muted loop playsinline class="artist-background-video">
+            <source src="city-view.mp4" type="video/mp4">
+        </video>
 
-    <!-- =====================================
-         THE ARTIST
-    ====================================== -->
+        <div class="artist-overlay"></div>
 
-    <section id="about" class="artist-section">
+        <div class="artist-content">
 
-        <video
-            autoplay
-            muted
-            loop
-            playsinline
-            class="artist-background-video">
+            <div class="artist-text">
 
-            <source src="city-view.mp4" type="video/mp4">
-        </video>
+                <h2>The Artist</h2>
 
-        <div class="artist-overlay"></div>
+                <h3>"What defines identity?"</h3>
 
-        <div class="artist-content">
+                <p>Every moment shapes a larger story.</p>
 
-            <div class="artist-text">
+                <p>VXNUS explores emotion, atmosphere, and storytelling through music.</p>
 
-                <h2>The Artist</h2>
+                <p>Everything has a deeper meaning.</p>
 
-                <h3>“What defines identity?”</h3>
+                <a href="#" class="discover-button">
+                    Discover More →
+                </a>
 
-                <p>Every moment shapes a larger story.</p>
+            </div>
 
-                <p>
-                    VXNUS explores emotion, atmosphere,
-                    and storytelling through music.
-                </p>
+        </div>
 
-                <p>Everything has a deeper meaning.</p>
+    </section>
 
-                <a href="#" class="discover-button">
-                    Discover More →
-                </a>
+    <!-- STORY IMAGINED -->
 
-            </div>
+<section id="story" class="story-section">
 
-        </div>
+    <!-- Intro Animation -->
 
-    </section>
+    <video
+        id="storyIntro"
+        class="story-background-video active"
+        autoplay
+        muted
+        playsinline>
 
+        <source src="eyes-open.mp4" type="video/mp4">
 
-    <!-- =====================================
-         THE STORY IMAGINED
-    ====================================== -->
+    </video>
 
-    <section id="story" class="story-section">
+    <!-- Endless Loop -->
 
-        <!-- Intro animation: plays once -->
+    <video
+        id="storyLoop"
+        class="story-background-video story-loop"
+        muted
+        loop
+        playsinline>
 
-        <video
-            id="storyIntro"
-            class="story-background-video active"
-            muted
-            playsinline
-            preload="auto">
+        <source src="eyes-open-cont.mp4" type="video/mp4">
 
-            <source src="eyes-open.mp4" type="video/mp4">
-        </video>
+    </video>
 
-        <!-- Continuing animation: loops forever -->
+    <div class="story-overlay"></div>
 
-        <video
-            id="storyLoop"
-            class="story-background-video story-loop"
-            muted
-            loop
-            playsinline
-            preload="auto">
+    <div class="story-content">
 
-            <source src="eyes-open-cont.mp4" type="video/mp4">
-        </video>
+    <h2>The Story Imagined</h2>
 
-        <div class="story-overlay"></div>
+</div>
 
-        <div class="story-content">
+    <div class="album creation">
 
-            <h2>The Story Imagined</h2>
+    <img
+        class="album-image"
+        src="creation.jpg"
+        alt="Creation Album">
 
-            <p class="story-instruction">
-                Click an album to learn more
-            </p>
+    <video
+        class="album-video"
+        muted
+        loop
+        playsinline>
 
-        </div>
+        <source src="creation.mp4" type="video/mp4">
 
-        <!-- Creation album -->
+    </video>
 
-        <a
-            href="#"
-            class="album creation"
-            aria-label="Learn more about Creation">
+</div>
 
-            <img
-                class="album-image"
-                src="creation.jpg"
-                alt="VXNUS Creation album cover">
+</section>
 
-            <video
-                class="album-video"
-                muted
-                loop
-                playsinline
-                preload="metadata">
-
-                <source src="creation.mp4" type="video/mp4">
-            </video>
-
-        </a>
-
-    </section>
-
-
-    <script src="script.js"></script>
-
-</body>
+<script src="script.js"></script>
 
 </html>
