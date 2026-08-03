@@ -4,23 +4,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>VXNUS</title>
+
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <!-- HERO -->
+    <!-- =====================================
+         HERO
+    ====================================== -->
 
     <section class="hero">
 
-        <video autoplay muted loop playsinline class="background-video">
+        <video
+            autoplay
+            muted
+            loop
+            playsinline
+            class="background-video">
+
             <source src="city-loop.mp4" type="video/mp4">
         </video>
 
         <div class="overlay"></div>
 
         <div class="hero-content">
+
             <h1>VXNUS</h1>
 
             <p>Every Moment Tells A Story</p>
@@ -34,11 +45,20 @@
 
     </section>
 
-    <!-- ARTIST -->
+
+    <!-- =====================================
+         THE ARTIST
+    ====================================== -->
 
     <section id="about" class="artist-section">
 
-        <video autoplay muted loop playsinline class="artist-background-video">
+        <video
+            autoplay
+            muted
+            loop
+            playsinline
+            class="artist-background-video">
+
             <source src="city-view.mp4" type="video/mp4">
         </video>
 
@@ -50,11 +70,14 @@
 
                 <h2>The Artist</h2>
 
-                <h3>"What defines identity?"</h3>
+                <h3>“What defines identity?”</h3>
 
                 <p>Every moment shapes a larger story.</p>
 
-                <p>VXNUS explores emotion, atmosphere, and storytelling through music.</p>
+                <p>
+                    VXNUS explores emotion, atmosphere,
+                    and storytelling through music.
+                </p>
 
                 <p>Everything has a deeper meaning.</p>
 
@@ -68,66 +91,79 @@
 
     </section>
 
-    <!-- STORY IMAGINED -->
 
-<section id="story" class="story-section">
+    <!-- =====================================
+         THE STORY IMAGINED
+    ====================================== -->
 
-    <!-- Intro Animation -->
+    <section id="story" class="story-section">
 
-    <video
-        id="storyIntro"
-        class="story-background-video active"
-        autoplay
-        muted
-        playsinline>
+        <!-- Intro animation: plays once -->
 
-        <source src="eyes-open.mp4" type="video/mp4">
+        <video
+            id="storyIntro"
+            class="story-background-video active"
+            muted
+            playsinline
+            preload="auto">
 
-    </video>
+            <source src="eyes-open.mp4" type="video/mp4">
+        </video>
 
-    <!-- Endless Loop -->
+        <!-- Continuing animation: loops forever -->
 
-    <video
-        id="storyLoop"
-        class="story-background-video story-loop"
-        muted
-        loop
-        playsinline>
+        <video
+            id="storyLoop"
+            class="story-background-video story-loop"
+            muted
+            loop
+            playsinline
+            preload="auto">
 
-        <source src="eyes-open-cont.mp4" type="video/mp4">
+            <source src="eyes-open-cont.mp4" type="video/mp4">
+        </video>
 
-    </video>
+        <div class="story-overlay"></div>
 
-    <div class="story-overlay"></div>
+        <div class="story-content">
 
-    <div class="story-content">
+            <h2>The Story Imagined</h2>
 
-    <h2>The Story Imagined</h2>
+            <p class="story-instruction">
+                Click an album to learn more
+            </p>
 
-</div>
+        </div>
 
-    <div class="album creation">
+        <!-- Creation album -->
 
-    <img
-        class="album-image"
-        src="creation.jpg"
-        alt="Creation Album">
+        <a
+            href="#"
+            class="album creation"
+            aria-label="Learn more about Creation">
 
-    <video
-        class="album-video"
-        muted
-        loop
-        playsinline>
+            <img
+                class="album-image"
+                src="creation.jpg"
+                alt="VXNUS Creation album cover">
 
-        <source src="creation.mp4" type="video/mp4">
+            <video
+                class="album-video"
+                muted
+                loop
+                playsinline
+                preload="metadata">
 
-    </video>
+                <source src="creation.mp4" type="video/mp4">
+            </video>
 
-</div>
+        </a>
 
-</section>
+    </section>
 
-<script src="script.js"></script>
 
+    <script src="script.js"></script>
+
+</body>
 
 </html>
