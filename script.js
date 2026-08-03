@@ -81,6 +81,9 @@ const storyIntro = document.getElementById("storyIntro");
 
 const storyLoop = document.getElementById("storyLoop");
 
+storyIntro.load();
+storyLoop.load();
+
 let storyStarted = false;
 
 let storyLoopStarted = false;
@@ -157,8 +160,8 @@ if(storySection){
 
     },{
 
-        threshold:0.01,
-        rootMargin: "300px 0px"
+        threshold:0.35
+    
 
     });
 
