@@ -3,7 +3,6 @@
 // ==========================================
 
 const standardVideos = document.querySelectorAll(
-    "video:not(#storyIntro):not(#storyLoop)"
     "video:not(#storyIntro):not(#storyLoop):not(.album-video)"
 );
 
@@ -76,7 +75,6 @@ to the continuing loop video.
 */
 
 function beginStoryCrossfade() {
-    if (crossfadeStarted) return;
 
     if (crossfadeStarted) {
         return;
@@ -86,7 +84,6 @@ function beginStoryCrossfade() {
 
     storyLoop.currentTime = 0;
 
-    storyLoop.play()
     storyLoop
         .play()
         .then(() => {
@@ -141,8 +138,6 @@ if (storySection && storyIntro && storyLoop) {
 
     });
 
-    // Backup in case Safari misses the timeupdate threshold.
-    storyIntro.addEventListener("ended", beginStoryCrossfade);
 
     /*
     Safari backup in case timeupdate misses
@@ -163,25 +158,41 @@ if (storySection && storyIntro && storyLoop) {
                 if (entry.isIntersecting) {
 
                     storySection.classList.add("is-visible");
+    // Trigger all Story CSS animations
+    storySection.classList.add("is-visible");
+
+    if (!storyStarted) {
+
+        storyStarted = true;
 
                     if (!storyStarted) {
+        storyIntro.currentTime = 0;
+        storyIntro.play().catch(() => {});
 
                         storyStarted = true;
-                        storyIntro.currentTime = 0;
-                        storyIntro.play().catch(() => {});
                         startStorySequence();
+    } else if (crossfadeStarted) {
 
                     } else if (crossfadeStarted) {
+        storyLoop.play().catch(() => {});
 
                         storyLoop.play().catch(() => {});
+    } else {
 
                     } else {
+        storyIntro.play().catch(() => {});
 
                         storyIntro.play().catch(() => {});
+    }
+
+} else {
 
                     }
+    storyIntro.pause();
+    storyLoop.pause();
 
                 } else {
+}
 
                     storyIntro.pause();
                     storyLoop.pause();
@@ -199,16 +210,13 @@ if (storySection && storyIntro && storyLoop) {
     storyObserver.observe(storySection);
 }
 
-// ===== ALBUM HOVER VIDEO =====
 
-document.querySelectorAll(".album").forEach(album => {
 // ==========================================
 // ALBUM HOVER VIDEOS
 // ==========================================
 
 document.querySelectorAll(".album").forEach((album) => {
 
-    const video = album.querySelector("video");
     const video = album.querySelector(".album-video");
 
     if (!video) {
@@ -218,7 +226,6 @@ document.querySelectorAll(".album").forEach((album) => {
     album.addEventListener("mouseenter", () => {
 
         video.currentTime = 0;
-        video.play();
 
         video.play().catch(() => {});
 
@@ -229,9 +236,6 @@ document.querySelectorAll(".album").forEach((album) => {
         video.pause();
         video.currentTime = 0;
 
-    });
-
-});
     });
 
 });
