@@ -2,131 +2,158 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VXNUS</title>
-    <link rel="stylesheet" href="style.css">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>VXNUS</title>
+
+    <link rel="stylesheet" href="style.css">
+
 </head>
 
 <body>
 
-    <!-- HERO -->
+    <!-- ================= HERO ================= -->
 
-    <section class="hero">
+    <section class="hero">
 
-        <video autoplay muted loop playsinline class="background-video">
-            <source src="city-loop.mp4" type="video/mp4">
-        </video>
+        <video autoplay muted loop playsinline class="background-video">
+            <source src="city-loop.mp4" type="video/mp4">
+        </video>
 
-        <div class="overlay"></div>
+        <div class="overlay"></div>
 
-        <div class="hero-content">
-            <h1>VXNUS</h1>
+        <div class="hero-content">
 
-            <p>Every Moment Tells A Story</p>
+            <h1>VXNUS</h1>
 
-            <a href="#about" class="enter-button">
-                <span>Enter New World</span>
-                <span class="arrow">&#8964;</span>
-            </a>
+            <p>Every Moment Tells A Story</p>
 
-        </div>
+            <a href="#about" class="enter-button">
 
-    </section>
+                <span>Enter New World</span>
 
-    <!-- ARTIST -->
+                <span class="arrow">&#8964;</span>
 
-    <section id="about" class="artist-section">
+            </a>
 
-        <video autoplay muted loop playsinline class="artist-background-video">
-            <source src="city-view.mp4" type="video/mp4">
-        </video>
+        </div>
 
-        <div class="artist-overlay"></div>
+    </section>
 
-        <div class="artist-content">
 
-            <div class="artist-text">
 
-                <h2>The Artist</h2>
+    <!-- ================= THE ARTIST ================= -->
 
-                <h3>"What defines identity?"</h3>
+    <section id="about" class="artist-section">
 
-                <p>Every moment shapes a larger story.</p>
+        <video autoplay muted loop playsinline class="artist-background-video">
 
-                <p>VXNUS explores emotion, atmosphere, and storytelling through music.</p>
+            <source src="city-view.mp4" type="video/mp4">
 
-                <p>Everything has a deeper meaning.</p>
+        </video>
 
-                <a href="#" class="discover-button">
-                    Discover More →
-                </a>
+        <div class="artist-overlay"></div>
 
-            </div>
+        <div class="artist-content">
 
-        </div>
+            <div class="artist-text">
 
-    </section>
+                <h2>The Artist</h2>
 
-    <!-- STORY IMAGINED -->
+                <h3>"What defines identity?"</h3>
 
-<section id="story" class="story-section">
+                <p>Every moment shapes a larger story.</p>
 
-    <!-- Intro Animation -->
+                <p>VXNUS explores emotion, atmosphere, and storytelling through music.</p>
 
-    <video
-        id="storyIntro"
-        class="story-background-video active"
-        autoplay
-        muted
-        playsinline>
+                <p>Everything has a deeper meaning.</p>
 
-        <source src="eyes-open.mp4" type="video/mp4">
+                <a href="#" class="discover-button">
 
-    </video>
+                    Discover More →
 
-    <!-- Endless Loop -->
+                </a>
 
-    <video
-        id="storyLoop"
-        class="story-background-video story-loop"
-        muted
-        loop
-        playsinline>
+            </div>
 
-        <source src="eyes-open-cont.mp4" type="video/mp4">
+        </div>
 
-    </video>
+    </section>
 
-    <div class="story-overlay"></div>
 
-    <div class="story-content">
 
-    <h2>The Story Imagined</h2>
+    <!-- ================= STORY IMAGINED ================= -->
 
-</div>
+    <section id="story" class="story-section">
 
-    <div class="album creation">
+        <!-- Intro Video -->
 
-    <img
-        class="album-image"
-        src="creation.jpg"
-        alt="Creation Album">
+        <video
+            id="storyIntro"
+            class="story-background-video active"
+            muted
+            playsinline>
 
-    <video
-        class="album-video"
-        muted
-        loop
-        playsinline>
+            <source src="eyes-open.mp4" type="video/mp4">
 
-        <source src="creation.mp4" type="video/mp4">
+        </video>
 
-    </video>
+        <!-- Endless Loop -->
 
-</div>
+        <video
+            id="storyLoop"
+            class="story-background-video story-loop"
+            muted
+            loop
+            playsinline>
 
-</section>
+            <source src="eyes-open-cont.mp4" type="video/mp4">
 
-<script src="script.js"></script>
+        </video>
+
+        <div class="story-overlay"></div>
+
+
+
+        <div class="story-content">
+
+            <h2>The Story Imagined</h2>
+
+            <p>Click an album to learn more</p>
+
+        </div>
+
+
+
+        <!-- CREATION -->
+
+        <a href="#" class="album creation">
+
+            <img
+                class="album-image"
+                src="creation.jpg"
+                alt="Creation">
+
+            <video
+                class="album-video"
+                muted
+                loop
+                playsinline>
+
+                <source src="creation.mp4" type="video/mp4">
+
+            </video>
+
+        </a>
+
+    </section>
+
+
+
+    <script src="script.js"></script>
+
+</body>
 
 </html>
