@@ -4,13 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>VXNUS</title>
-
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
+
+    <!-- HERO -->
 
     <section class="hero">
 
@@ -29,9 +29,12 @@
                 <span>Enter New World</span>
                 <span class="arrow">&#8964;</span>
             </a>
+
         </div>
 
     </section>
+
+    <!-- ARTIST -->
 
     <section id="about" class="artist-section">
 
@@ -47,7 +50,7 @@
 
                 <h2>The Artist</h2>
 
-                <h3>“What defines identity?”</h3>
+                <h3>"What defines identity?"</h3>
 
                 <p>Every moment shapes a larger story.</p>
 
@@ -65,7 +68,42 @@
 
     </section>
 
+    <!-- STORY IMAGINED -->
+
+    <section id="story" class="story-section">
+
+        <video
+            id="storyVideo"
+            class="story-background-video"
+            autoplay
+            muted
+            playsinline>
+
+            <source src="eyes-open.mp4" type="video/mp4">
+
+        </video>
+
+        <div class="story-overlay"></div>
+
+    </section>
+
     <script src="script.js"></script>
+
+    <script>
+
+        const storyVideo = document.getElementById("storyVideo");
+
+        storyVideo.addEventListener("ended", () => {
+
+            storyVideo.src = "eyes-open-cont.mp4";
+
+            storyVideo.loop = true;
+
+            storyVideo.play();
+
+        });
+
+    </script>
 
 </body>
 
