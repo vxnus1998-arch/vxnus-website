@@ -55,7 +55,10 @@ video {
  z-index: 0;
 
  opacity: 0;
- animation: cityFadeIn 3s ease forwards;
+ transition: opacity 3s ease;
+}
+.background-video.is-ready {
+ opacity: 1;
 }
 
 .overlay {
