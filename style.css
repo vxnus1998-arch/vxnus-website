@@ -463,7 +463,16 @@ video {
 }
 
 .story-background-video.active {
- opacity: 1;
+ animation: storyBackgroundFade 2.5s ease forwards;
+} 
+
+ @keyframes storyBackgroundFade {
+  from {
+   opacity: 0;
+  }
+  to {
+   opacity: 1;
+  } 
 }
 
 .story-loop {
