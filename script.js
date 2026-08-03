@@ -157,24 +157,32 @@ if (storySection && storyIntro && storyLoop) {
 
                 if (entry.isIntersecting) {
 
-                    storySection.classList.add("is-visible");
+    // Trigger all Story CSS animations
+    storySection.classList.add("is-visible");
 
-                    if (!storyStarted) {
+    if (!storyStarted) {
 
-                        storyStarted = true;
-                        startStorySequence();
+        storyStarted = true;
 
-                    } else if (crossfadeStarted) {
+        storyIntro.currentTime = 0;
+        storyIntro.play().catch(() => {});
 
-                        storyLoop.play().catch(() => {});
+    } else if (crossfadeStarted) {
 
-                    } else {
+        storyLoop.play().catch(() => {});
 
-                        storyIntro.play().catch(() => {});
+    } else {
 
-                    }
+        storyIntro.play().catch(() => {});
 
-                } else {
+    }
+
+} else {
+
+    storyIntro.pause();
+    storyLoop.pause();
+
+}
 
                     storyIntro.pause();
                     storyLoop.pause();
