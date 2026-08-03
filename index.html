@@ -104,31 +104,5 @@
 
 <script src="script.js"></script>
 
-<script>
-
-const intro = document.getElementById("storyIntro");
-const loop = document.getElementById("storyLoop");
-
-intro.addEventListener("timeupdate", () => {
-
-    if (intro.duration - intro.currentTime < 1.2) {
-
-        if (loop.paused) {
-
-            loop.play();
-
-            loop.classList.add("active");
-
-            intro.classList.remove("active");
-
-        }
-
-    }
-
-});
-
-</script>
-
-</body>
 
 </html>
