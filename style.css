@@ -541,17 +541,11 @@ transition-delay: 1.8s;
 .story-content{
 
     position:absolute;
-
-    top:8%;
-
+    top:7%;
     left:50%;
-
     transform:translateX(-50%);
-
     width:100%;
-
     z-index:3;
-
     text-align:center;
 
 }
@@ -559,9 +553,7 @@ transition-delay: 1.8s;
 .story-content h2{
 
     font-size:5rem;
-
     letter-spacing:3px;
-
     color:white;
 
     text-shadow:
@@ -569,12 +561,24 @@ transition-delay: 1.8s;
         0 0 45px rgba(255,0,255,.35);
 
     opacity:0;
-
     transform:translateY(24px);
+    animation:storyTitleFade 1.4s ease forwards;
+    animation-delay:.8s;
+
+}
+
+.story-content p{
+
+    margin-top:22px;        /* pushes it further below the title */
+    font-size:1.35rem;      /* much more readable */
+    letter-spacing:1px;
+    color:rgba(255,255,255,.92);
+
+    opacity:0;
+    transform:translateY(20px);
 
     animation:storyTitleFade 1.4s ease forwards;
-
-    animation-delay:.8s;
+    animation-delay:1.3s;
 
 }
 
