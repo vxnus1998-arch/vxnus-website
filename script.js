@@ -3,7 +3,7 @@
 // ==========================================
 
 const standardVideos = document.querySelectorAll(
-    "video:not(#storyIntro):not(#storyLoop)"
+    "video:not(#storyIntro):not(#storyLoop):not(album-video)"
 );
 
 const videoObserver = new IntersectionObserver((entries) => {
@@ -26,7 +26,8 @@ const videoObserver = new IntersectionObserver((entries) => {
 
 }, {
 
-    threshold: 0.35
+    threshold: 0.01,
+    rootMargin: "300px 0px"
 
 });
 
@@ -156,7 +157,8 @@ if(storySection){
 
     },{
 
-        threshold:0.35
+        threshold:0.01,
+        rootMargin: "300px 0px"
 
     });
 
