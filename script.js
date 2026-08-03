@@ -3,30 +3,29 @@
 // ==========================================
 
 const standardVideos = document.querySelectorAll(
-    "video:not(#storyIntro):not(#storyLoop):not(.album-video)"
+    "video:not(#storyIntro):not(#storyLoop)"
 );
 
 const videoObserver = new IntersectionObserver(
-    (entries) => {
-        entries.forEach((entry) => {
-            const video = entry.target;
+    (entries) => {
+        entries.forEach((entry) => {
+            const video = entry.target;
 
-            if (entry.isIntersecting) {
-                video.play().catch(() => {});
-            } else {
-                video.pause();
-            }
-        });
-    },
-    {
-        threshold: 0.35
-    }
+            if (entry.isIntersecting) {
+                video.play().catch(() => {});
+            } else {
+                video.pause();
+            }
+        });
+    },
+    {
+        threshold: 0.35
+    }
 );
 
 standardVideos.forEach((video) => {
-    videoObserver.observe(video);
+    videoObserver.observe(video);
 });
-
 
 // ==========================================
 // ARTIST SECTION FADE
@@ -35,25 +34,21 @@ standardVideos.forEach((video) => {
 const artistSection = document.querySelector(".artist-section");
 
 if (artistSection) {
+    const artistObserver = new IntersectionObserver(
+        (entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    artistSection.classList.add("is-visible");
+                }
+            });
+        },
+        {
+            threshold: 0.3
+        }
+    );
 
-    const artistObserver = new IntersectionObserver(
-        (entries) => {
-            entries.forEach((entry) => {
-
-                if (entry.isIntersecting) {
-                    artistSection.classList.add("is-visible");
-                }
-
-            });
-        },
-        {
-            threshold: 0.3
-        }
-    );
-
-    artistObserver.observe(artistSection);
+    artistObserver.observe(artistSection);
 }
-
 
 // ==========================================
 // STORY IMAGINED VIDEO SEQUENCE
@@ -62,180 +57,87 @@ if (artistSection) {
 const storySection = document.querySelector(".story-section");
 const storyIntro = document.getElementById("storyIntro");
 const storyLoop = document.getElementById("storyLoop");
-const creationAlbum = document.querySelector(".creation");
 
 let storyStarted = false;
 let crossfadeStarted = false;
-let creationRevealTimer = null;
-
-
-/*
-Switches from the one-time intro video
-to the continuing loop video.
-*/
 
 function beginStoryCrossfade() {
+    if (crossfadeStarted) return;
 
-    if (crossfadeStarted) {
-        return;
-    }
+    crossfadeStarted = true;
+    storyLoop.currentTime = 0;
 
-    crossfadeStarted = true;
-
-    storyLoop.currentTime = 0;
-
-    storyLoop
-        .play()
-        .then(() => {
-
-            storyLoop.classList.add("active");
-            storyIntro.classList.remove("active");
-
-        })
-        .catch(() => {});
+    storyLoop.play()
+        .then(() => {
+            storyLoop.classList.add("active");
+            storyIntro.classList.remove("active");
+        })
+        .catch(() => {});
 }
-
-
-/*
-Starts the Story Imagined sequence
-the first time the section enters view.
-*/
-
-function startStorySequence() {
-
-    storySection.classList.add("is-visible");
-
-    storyIntro.currentTime = 0;
-
-    storyIntro.play().catch(() => {});
-
-    if (creationAlbum) {
-
-        creationRevealTimer = window.setTimeout(() => {
-
-            creationAlbum.classList.add("album-revealed");
-
-        }, 3500);
-
-    }
-}
-
 
 if (storySection && storyIntro && storyLoop) {
 
-    /*
-    Begin the crossfade just before the intro ends.
-    */
+    storyIntro.addEventListener("timeupdate", () => {
+        if (
+            Number.isFinite(storyIntro.duration) &&
+            storyIntro.duration - storyIntro.currentTime <= 0.6
+        ) {
+            beginStoryCrossfade();
+        }
+    });
 
-    storyIntro.addEventListener("timeupdate", () => {
+    // Backup in case Safari misses the timeupdate threshold.
+    storyIntro.addEventListener("ended", beginStoryCrossfade);
 
-        if (
-            Number.isFinite(storyIntro.duration) &&
-            storyIntro.duration - storyIntro.currentTime <= 0.6
-        ) {
-            beginStoryCrossfade();
-        }
+    const storyObserver = new IntersectionObserver(
+        (entries) => {
+            entries.forEach((entry) => {
 
-    });
+                if (entry.isIntersecting) {
 
+                    if (!storyStarted) {
+                        storyStarted = true;
+                        storyIntro.currentTime = 0;
+                        storyIntro.play().catch(() => {});
+                    } else if (crossfadeStarted) {
+                        storyLoop.play().catch(() => {});
+                    } else {
+                        storyIntro.play().catch(() => {});
+                    }
 
-    /*
-    Safari backup in case timeupdate misses
-    the final 0.6-second window.
-    */
+                } else {
+                    storyIntro.pause();
+                    storyLoop.pause();
+                }
 
-    storyIntro.addEventListener(
-        "ended",
-        beginStoryCrossfade
-    );
+            });
+        },
+        {
+            threshold: 0.35
+        }
+    );
 
-
-    const storyObserver = new IntersectionObserver(
-        (entries) => {
-
-            entries.forEach((entry) => {
-
-                if (entry.isIntersecting) {
-
-                    storySection.classList.add("is-visible");
-    // Trigger all Story CSS animations
-    storySection.classList.add("is-visible");
-
-    if (!storyStarted) {
-
-        storyStarted = true;
-
-                    if (!storyStarted) {
-        storyIntro.currentTime = 0;
-        storyIntro.play().catch(() => {});
-
-                        storyStarted = true;
-                        startStorySequence();
-    } else if (crossfadeStarted) {
-
-                    } else if (crossfadeStarted) {
-        storyLoop.play().catch(() => {});
-
-                        storyLoop.play().catch(() => {});
-    } else {
-
-                    } else {
-        storyIntro.play().catch(() => {});
-
-                        storyIntro.play().catch(() => {});
-    }
-
-} else {
-
-                    }
-    storyIntro.pause();
-    storyLoop.pause();
-
-                } else {
+    storyObserver.observe(storySection);
 }
 
-                    storyIntro.pause();
-                    storyLoop.pause();
+// ===== ALBUM HOVER VIDEO =====
 
-                }
+document.querySelectorAll(".album").forEach(album => {
 
-            });
+    const video = album.querySelector("video");
 
-        },
-        {
-            threshold: 0.35
-        }
-    );
+    album.addEventListener("mouseenter", () => {
 
-    storyObserver.observe(storySection);
-}
+        video.currentTime = 0;
+        video.play();
 
+    });
 
-// ==========================================
-// ALBUM HOVER VIDEOS
-// ==========================================
+    album.addEventListener("mouseleave", () => {
 
-document.querySelectorAll(".album").forEach((album) => {
+        video.pause();
+        video.currentTime = 0;
 
-    const video = album.querySelector(".album-video");
-
-    if (!video) {
-        return;
-    }
-
-    album.addEventListener("mouseenter", () => {
-
-        video.currentTime = 0;
-
-        video.play().catch(() => {});
-
-    });
-
-    album.addEventListener("mouseleave", () => {
-
-        video.pause();
-        video.currentTime = 0;
-
-    });
+    });
 
 });
