@@ -1,9 +1,26 @@
 // ==========================================
+// HERO VIDEO READY FADE
+// ==========================================
+
+const heroVideo = document.querySelector(".background-video");
+if (heroVideo) {
+    const revealHeroVideo = () => {
+        heroVideo.classList.add("is-ready");
+    };
+    if (heroVideo.readyState >= 2) {
+        revealHeroVideo();
+    } else {
+        heroVideo.addEventListener("loadeddata", revealHeroVideo, {
+            once: true
+        });
+    }
+   
+// ==========================================
 // STANDARD VIDEO CONTROLLER
 // ==========================================
 
 const standardVideos = document.querySelectorAll(
-    "video:not(#storyIntro):not(#storyLoop):not(album-video)"
+    "video:not(#storyIntro):not(#storyLoop):not(.album-video)"
 );
 
 const videoObserver = new IntersectionObserver((entries) => {
