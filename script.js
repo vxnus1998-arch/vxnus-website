@@ -142,6 +142,8 @@ if(storySection){
 
                     storyStarted = true;
 
+                    storyIntro.classList.add("active");
+
                     storyIntro.currentTime = 0;
 
                     storyIntro.play().catch(()=>{});
