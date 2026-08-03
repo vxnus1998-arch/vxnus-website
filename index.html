@@ -70,40 +70,64 @@
 
     <!-- STORY IMAGINED -->
 
-    <section id="story" class="story-section">
+<section id="story" class="story-section">
 
-        <video
-            id="storyVideo"
-            class="story-background-video"
-            autoplay
-            muted
-            playsinline>
+    <!-- Intro Animation -->
 
-            <source src="eyes-open.mp4" type="video/mp4">
+    <video
+        id="storyIntro"
+        class="story-background-video active"
+        autoplay
+        muted
+        playsinline>
 
-        </video>
+        <source src="eyes-open.mp4" type="video/mp4">
 
-        <div class="story-overlay"></div>
+    </video>
 
-    </section>
+    <!-- Endless Loop -->
 
-    <script src="script.js"></script>
+    <video
+        id="storyLoop"
+        class="story-background-video story-loop"
+        muted
+        loop
+        playsinline>
 
-    <script>
+        <source src="eyes-open-cont.mp4" type="video/mp4">
 
-        const storyVideo = document.getElementById("storyVideo");
+    </video>
 
-        storyVideo.addEventListener("ended", () => {
+    <div class="story-overlay"></div>
 
-            storyVideo.src = "eyes-open-cont.mp4";
+</section>
 
-            storyVideo.loop = true;
+<script src="script.js"></script>
 
-            storyVideo.play();
+<script>
 
-        });
+const intro = document.getElementById("storyIntro");
+const loop = document.getElementById("storyLoop");
 
-    </script>
+intro.addEventListener("timeupdate", () => {
+
+    if (intro.duration - intro.currentTime < 1.2) {
+
+        if (loop.paused) {
+
+            loop.play();
+
+            loop.classList.add("active");
+
+            intro.classList.remove("active");
+
+        }
+
+    }
+
+});
+
+</script>
 
 </body>
 
