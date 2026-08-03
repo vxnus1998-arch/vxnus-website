@@ -1,93 +1,130 @@
+/* ==========================================
+   GLOBAL
+========================================== */
+
 * {
-margin: 0;
-padding: 0;
-box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 html {
-scroll-behavior: smooth;
+    scroll-behavior: smooth;
 }
 
 body {
-margin: 0;
-background: black;
-color: white;
-font-family: Arial, Helvetica, sans-serif;
-overflow-x: hidden;
+    margin: 0;
+    overflow-x: hidden;
+    background: #000;
+    color: #fff;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
+video {
+    display: block;
+}
+
+
+/* ==========================================
+   HERO SECTION
+========================================== */
+
 .hero {
-position: relative;
-width: 100%;
-height: 100vh;
-display: flex;
-justify-content: center;
-align-items: center;
-overflow: hidden;
-background: black;
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    height: 100svh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+    background: #000;
 }
 
 .background-video {
-position: absolute;
-top: 0;
-left: 0;
-width: 100%;
-height: 100%;
-object-fit: cover;
-z-index: 0;
-opacity: 0;
-animation: cityFadeIn 1.8s ease forwards;
+    position: absolute;
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    z-index: 0;
+
+    opacity: 0;
+    animation: cityFadeIn 1.8s ease forwards;
 }
 
 .overlay {
-position: absolute;
-top: 0;
-right: 0;
-bottom: 0;
-left: 0;
-background: rgba(0, 0, 0, 0.45);
-z-index: 1;
+    position: absolute;
+    inset: 0;
+
+    z-index: 1;
+
+    background: rgba(0, 0, 0, 0.45);
 }
 
 .hero-content {
-position: relative;
-z-index: 2;
-text-align: center;
+    position: relative;
+    z-index: 2;
+
+    width: 100%;
+    padding: 0 24px;
+
+    text-align: center;
 }
 
 .hero h1 {
-position: relative;
-font-size: 7rem;
-letter-spacing: 14px;
-margin-bottom: 20px;
-opacity: 0;
-animation: titleFadeIn 1.2s ease forwards 1.2s;
-text-shadow:
-0 0 16px rgba(255, 255, 255, 0.6),
-0 0 40px rgba(255, 0, 255, 0.4);
+    position: relative;
+
+    margin-bottom: 20px;
+
+    font-size: 7rem;
+    line-height: 1;
+    letter-spacing: 14px;
+
+    opacity: 0;
+
+    text-shadow:
+        0 0 16px rgba(255, 255, 255, 0.6),
+        0 0 40px rgba(255, 0, 255, 0.4);
+
+    animation: titleFadeIn 1.2s ease 1.2s forwards;
 }
 
 .hero h1::after {
-content: "VXNUS";
-position: absolute;
-inset: 0;
-color: transparent;
-text-shadow:
-0 0 26px rgba(255, 255, 255, 0.5),
-0 0 60px rgba(255, 0, 255, 0.6);
-opacity: 0;
-animation: logoGlow 4s ease-in-out infinite 3s;
-pointer-events: none;
+    content: "VXNUS";
+
+    position: absolute;
+    inset: 0;
+
+    color: transparent;
+
+    opacity: 0;
+
+    text-shadow:
+        0 0 26px rgba(255, 255, 255, 0.5),
+        0 0 60px rgba(255, 0, 255, 0.6);
+
+    animation: logoGlow 4s ease-in-out 3s infinite;
+
+    pointer-events: none;
 }
 
 .hero p {
-    font-size: 1.75rem;
-    font-weight: 500;
     margin-top: 10px;
     margin-bottom: 45px;
+
+    font-size: 1.75rem;
+    font-weight: 500;
     letter-spacing: 2px;
+
     opacity: 0;
-    animation: textFadeIn 1s ease forwards 1.8s;
+
+    animation: textFadeIn 1s ease 1.8s forwards;
 }
 
 .enter-button {
@@ -95,600 +132,727 @@ pointer-events: none;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+
     gap: 6px;
 
+    min-width: 260px;
     margin-top: 20px;
-
     padding: 22px 60px;
+
     border: 2px solid #ff00ff;
-    color: white;
-    text-decoration: none;
     border-radius: 6px;
+
     background: rgba(255, 0, 255, 0.15);
+
+    color: #fff;
+    font-size: 1rem;
+    text-decoration: none;
+
+    opacity: 0;
+
+    animation: buttonFadeIn 1s ease 2.4s forwards;
+
     transition:
         background 0.35s ease,
         box-shadow 0.35s ease,
         transform 0.35s ease;
-    opacity: 0;
-    animation: buttonFadeIn 1s ease forwards 2.4s;
 }
 
 .enter-button:hover {
-background: #ff00ff;
-box-shadow:
-0 0 20px #ff00ff,
-0 0 60px #ff00ff;
-transform: translateY(-3px);
-}
-
-#about {
-min-height: 100vh;
-background: #050505;
-}
-
-@keyframes cityFadeIn {
-from {
-opacity: 0;
-}
-
-to {
-opacity: 1;
-}
-}
-
-@keyframes titleFadeIn {
-from {
-opacity: 0;
-transform: translateY(18px);
-}
-
-to {
-opacity: 1;
-transform: translateY(0);
-}
-}
-
-@keyframes textFadeIn {
-from {
-opacity: 0;
-transform: translateY(12px);
-}
-
-to {
-opacity: 0.95;
-transform: translateY(0);
-}
-}
-
-@keyframes buttonFadeIn {
-from {
-opacity: 0;
-transform: translateY(12px);
-}
-
-to {
-opacity: 1;
-transform: translateY(0);
-}
-}
-
-@keyframes logoGlow {
-0%,
-100% {
-opacity: 0;
-}
-
-50% {
-opacity: 0.45;
-}
-}
-
-.enter-button {
-display: inline-flex;
-flex-direction: column;
-align-items: center;
-justify-content: center;
-gap: 6px;
-}
-
-.enter-button .arrow {
-display: block;
-font-size: 1.6rem;
-line-height: 1;
-animation: arrowBounce 2.2s ease-in-out infinite;
-}
-
-@keyframes arrowBounce {
-0%,
-100% {
-transform: translateY(0);
-opacity: 0.75;
-}
-
-50% {
-transform: translateY(6px);
-opacity: 1;
-}
-}
-
-/* THE ARTIST SECTION */
-
-.artist-section {
-position: relative;
-width: 100%;
-height: 100vh;
-overflow: hidden;
-background: black;
-}
-
-.artist-background-video {
-position: absolute;
-top: 0;
-left: 0;
-width: 100%;
-height: 100%;
-object-fit: cover;
-z-index: 0;
-opacity: 0;
-transition: opacity 1.8s ease;
-}
-
-.http://artist-section.is-visible .artist-background-video {
-opacity: 1;
-}
-
-.artist-overlay {
-position: absolute;
-inset: 0;
-background: rgba(0, 0, 0, 0.28);
-z-index: 1;
-}
-
-/* ---------- THE ARTIST CONTENT ---------- */
-
-.artist-content{
-
-    position:relative;
-
-    z-index:2;
-
-    width:100%;
-
-    height:100%;
-
-    display:flex;
-
-    justify-content:flex-end;
-
-    align-items:flex-start;
-    padding-top:14vh;
-
-    padding-right:3%;
-
-}
-
-.artist-text{
-
-    max-width:650px;
-
-    color:white;
-
-}
-
-.artist-text h2{
-
-    font-size:5rem;
-
-    margin-bottom:24px;
-
-    letter-spacing:2px;
-
-}
-
-.artist-text h3{
-
-    font-size:2.5rem;
-
-    font-style:italic;
-
-    font-weight:400;
-
-    margin-bottom:50px;
-
-    color:#ffffff;
-
-}
-
-.artist-text p{
-
-    font-size:1.45rem;
-
-    line-height:2;
-
-    margin-bottom:28px;
-
-    opacity:.92;
-
-}
-
-.discover-button{
-
-    display:inline-block;
-
-    margin-top:40px;
-
-    padding:22px 52px;
-
-    font-size:1.2rem;
-
-    border:2px solid #ff00ff;
-
-    color:white;
-
-    text-decoration:none;
-
-    border-radius:6px;
-
-    background:rgba(255,0,255,.12);
-
-    transition:.35s;
-
-}
-
-.discover-button:hover{
-
-    background:#ff00ff;
+    background: #ff00ff;
 
     box-shadow:
         0 0 20px #ff00ff,
         0 0 60px #ff00ff;
 
+    transform: translateY(-3px);
 }
 
-/* THE ARTIST TEXT ANIMATIONS */
+.enter-button .arrow {
+    display: block;
+
+    font-size: 1.6rem;
+    line-height: 1;
+
+    animation: arrowBounce 2.2s ease-in-out infinite;
+}
+
+
+/* ==========================================
+   HERO ANIMATIONS
+========================================== */
+
+@keyframes cityFadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes titleFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(18px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes textFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+
+    to {
+        opacity: 0.95;
+        transform: translateY(0);
+    }
+}
+
+@keyframes buttonFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes logoGlow {
+    0%,
+    100% {
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 0.45;
+    }
+}
+
+@keyframes arrowBounce {
+    0%,
+    100% {
+        opacity: 0.75;
+        transform: translateY(0);
+    }
+
+    50% {
+        opacity: 1;
+        transform: translateY(6px);
+    }
+}
+
+
+/* ==========================================
+   THE ARTIST SECTION
+========================================== */
+
+.artist-section {
+    position: relative;
+
+    width: 100%;
+    height: 100vh;
+    height: 100svh;
+
+    overflow: hidden;
+    background: #000;
+}
+
+.artist-background-video {
+    position: absolute;
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    z-index: 0;
+
+    opacity: 0;
+
+    transition: opacity 1.8s ease;
+}
+
+.artist-section.is-visible .artist-background-video {
+    opacity: 1;
+}
+
+.artist-overlay {
+    position: absolute;
+    inset: 0;
+
+    z-index: 1;
+
+    background: rgba(0, 0, 0, 0.28);
+}
+
+.artist-content {
+    position: relative;
+    z-index: 2;
+
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-end;
+
+    padding-top: 14vh;
+    padding-right: 3%;
+    padding-left: 3%;
+}
+
+.artist-text {
+    width: 100%;
+    max-width: 650px;
+
+    color: #fff;
+}
+
+.artist-text h2 {
+    margin-bottom: 24px;
+
+    font-size: 5rem;
+    line-height: 1;
+    letter-spacing: 2px;
+}
+
+.artist-text h3 {
+    margin-bottom: 50px;
+
+    font-size: 2.5rem;
+    font-weight: 400;
+    font-style: italic;
+    line-height: 1.25;
+}
+
+.artist-text p {
+    margin-bottom: 28px;
+
+    font-size: 1.45rem;
+    line-height: 2;
+
+    opacity: 0.92;
+}
+
+.discover-button {
+    display: inline-block;
+
+    margin-top: 40px;
+    padding: 22px 52px;
+
+    border: 2px solid #ff00ff;
+    border-radius: 6px;
+
+    background: rgba(255, 0, 255, 0.12);
+
+    color: #fff;
+    font-size: 1.2rem;
+    text-decoration: none;
+
+    transition:
+        background 0.35s ease,
+        box-shadow 0.35s ease,
+        transform 0.35s ease;
+}
+
+.discover-button:hover {
+    background: #ff00ff;
+
+    box-shadow:
+        0 0 20px #ff00ff,
+        0 0 60px #ff00ff;
+
+    transform: translateY(-3px);
+}
+
+
+/* ==========================================
+   ARTIST TEXT ANIMATIONS
+========================================== */
 
 .artist-text h2,
 .artist-text h3,
 .artist-text p,
 .discover-button {
-opacity: 0;
-transform: translateY(24px);
-transition:
-opacity 0.9s ease,
-transform 0.9s ease;
+    opacity: 0;
+    transform: translateY(24px);
+
+    transition:
+        opacity 0.9s ease,
+        transform 0.9s ease;
 }
 
-.http://artist-section.is-visible .artist-text h2 {
-opacity: 1;
-transform: translateY(0);
-transition-delay: 0.3s;
+.artist-section.is-visible .artist-text h2 {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.3s;
 }
 
-.http://artist-section.is-visible .artist-text h3 {
-opacity: 1;
-transform: translateY(0);
-transition-delay: 0.6s;
+.artist-section.is-visible .artist-text h3 {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.6s;
 }
 
-.http://artist-section.is-visible .artist-text p:nth-of-type(1) {
-opacity: 1;
-transform: translateY(0);
-transition-delay: 0.9s;
+.artist-section.is-visible .artist-text p:nth-of-type(1) {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.9s;
 }
 
-.http://artist-section.is-visible .artist-text p:nth-of-type(2) {
-opacity: 1;
-transform: translateY(0);
-transition-delay: 1.2s;
+.artist-section.is-visible .artist-text p:nth-of-type(2) {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 1.2s;
 }
 
-.http://artist-section.is-visible .artist-text p:nth-of-type(3) {
-opacity: 1;
-transform: translateY(0);
-transition-delay: 1.5s;
+.artist-section.is-visible .artist-text p:nth-of-type(3) {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 1.5s;
 }
 
-.http://artist-section.is-visible .discover-button {
-opacity: 1;
-transform: translateY(0);
-transition-delay: 1.8s;
+.artist-section.is-visible .discover-button {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 1.8s;
 }
 
-/* ===========================
-   MOBILE
-=========================== */
-
-@media (max-width: 768px){
-
-.hero h1{
-    font-size: 3.8rem;
-    letter-spacing: 6px;
-}
-
-.hero p{
-    font-size: 1.2rem;
-    letter-spacing: 1px;
-    margin-bottom: 32px;
-}
-
-.enter-button{
-    padding:18px 42px;
-    font-size:1rem;
-}
-
-}
-
-/* MOBILE ARTIST SECTION */
-
-@media screen and (max-width: 768px) {
-
-.artist-section{
-    height:100svh;
-    overflow:hidden;
-}
-
-.artist-background-video{
-    object-fit:cover;
-    object-position:28% center;
-}
-
-.artist-overlay{
-    background:
-    linear-gradient(
-        to bottom,
-        rgba(0,0,0,.08) 0%,
-        rgba(0,0,0,.18) 45%,
-        rgba(0,0,0,.45) 100%
-    );
-}
-
-.artist-content{
-    position:relative;
-    z-index:2;
-
-    width:100%;
-    height:100%;
-
-    display:flex;
-    justify-content:flex-end;
-    align-items:flex-start;
-
-    padding-top:14vh;
-    padding-right:24px;
-    padding-left:24px;
-}
-
-.artist-text{
-    width:52%;
-    max-width:260px;
-    margin-left:auto;
-    text-align:left;
-}
-
-.artist-text h2{
-    font-size:3.1rem;
-    line-height:1;
-    margin-bottom:16px;
-}
-
-.artist-text h3{
-    font-size:2rem;
-    line-height:1.3;
-    margin-bottom:28px;
-}
-
-.artist-text p{
-    font-size:1.2rem;
-    line-height:1.7;
-    margin-bottom:18px;
-}
-
-.discover-button{
-    display:block;
-    width:100%;
-    margin-top:28px;
-    padding:18px 20px;
-    text-align:center;
-    font-size:1.1rem;
-}
-
-}
 
 /* ==========================================
-   STORY IMAGINED
+   THE STORY IMAGINED SECTION
 ========================================== */
 
-.story-section{
-    position:relative;
-    width:100%;
-    height:100vh;
-    overflow:hidden;
-    background:black;
+.story-section {
+    position: relative;
+
+    width: 100%;
+    height: 100vh;
+    height: 100svh;
+
+    overflow: hidden;
+    background: #000;
 }
 
-.story-background-video{
+.story-background-video {
+    position: absolute;
+    inset: 0;
 
-    position:absolute;
-    inset:0;
+    width: 100%;
+    height: 100%;
 
-    width:100%;
-    height:100%;
+    object-fit: cover;
 
-    object-fit:cover;
+    z-index: 0;
 
-    opacity:0;
+    opacity: 0;
 
-    transition:opacity 1.5s ease;
-
+    transition: opacity 1.5s ease;
 }
 
-.story-background-video.active{
-
-    opacity:1;
-
+.story-background-video.active {
+    opacity: 1;
 }
 
-.story-loop{
-
-    z-index:1;
-
+.story-loop {
+    z-index: 1;
 }
+
+.story-overlay {
+    position: absolute;
+    inset: 0;
+
+    z-index: 2;
+
+    background:
+        linear-gradient(
+            to bottom,
+            rgba(0, 0, 0, 0.16) 0%,
+            rgba(0, 0, 0, 0.02) 50%,
+            rgba(0, 0, 0, 0.12) 100%
+        );
+}
+
 
 /* ==========================================
    STORY TITLE
 ========================================== */
 
-.story-content{
+.story-content {
+    position: absolute;
 
-    position:absolute;
+    top: 7%;
+    left: 50%;
 
-    top:8%;
+    width: 100%;
+    padding: 0 24px;
 
-    left:50%;
+    z-index: 3;
 
-    transform:translateX(-50%);
+    text-align: center;
 
-    width:100%;
+    transform: translateX(-50%);
 
-    z-index:3;
-
-    text-align:center;
-
+    pointer-events: none;
 }
 
-.story-content h2{
+.story-content h2 {
+    font-size: 5rem;
+    line-height: 1;
+    letter-spacing: 3px;
 
-    font-size:5rem;
-
-    letter-spacing:3px;
-
-    color:white;
+    color: #fff;
 
     text-shadow:
-        0 0 18px rgba(255,255,255,.55),
-        0 0 45px rgba(255,0,255,.35);
+        0 0 18px rgba(255, 255, 255, 0.55),
+        0 0 45px rgba(255, 0, 255, 0.35);
 
-    opacity:0;
-
-    transform:translateY(24px);
-
-    animation:storyTitleFade 1.4s ease forwards;
-
-    animation-delay:.8s;
-
+    opacity: 0;
+    transform: translateY(24px);
 }
 
-@keyframes storyTitleFade{
+.story-content p {
+    margin-top: 22px;
 
-    from{
+    color: rgba(255, 255, 255, 0.92);
 
-        opacity:0;
-        transform:translateY(24px);
+    font-size: 1.35rem;
+    letter-spacing: 1px;
 
-    }
+    text-shadow:
+        0 2px 12px rgba(0, 0, 0, 0.8),
+        0 0 20px rgba(255, 0, 255, 0.22);
 
-    to{
-
-        opacity:1;
-        transform:translateY(0);
-
-    }
-
+    opacity: 0;
+    transform: translateY(20px);
 }
 
-/* ==========================
+.story-section.is-visible .story-content h2 {
+    animation: storyTextFade 1.4s ease 0.8s forwards;
+}
+
+.story-section.is-visible .story-content p {
+    animation: storyTextFade 1.4s ease 1.5s forwards;
+}
+
+@keyframes storyTextFade {
+    from {
+        opacity: 0;
+        transform: translateY(24px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* ==========================================
    FLOATING ALBUM
-========================== */
+========================================== */
 
-.album{
+.album {
+    position: absolute;
 
-    position:absolute;
+    width: 240px;
+    aspect-ratio: 1 / 1;
 
-    width:240px;
-    aspect-ratio:1/1;
+    z-index: 5;
 
-    cursor:pointer;
+    cursor: pointer;
+    text-decoration: none;
 
-    animation:
-        albumFloat 5s ease-in-out infinite;
+    opacity: 0;
 
     transition:
-        transform .45s ease,
-        filter .45s ease;
-
-    z-index:5;
-
+        transform 0.45s ease,
+        filter 0.45s ease;
 }
 
-/* Upper left */
+.creation {
+    top: 22%;
+    left: 9%;
+}
 
-.creation{
-
-    top:22%;
-    left:9%;
-
+.story-section.is-visible .creation {
+    animation:
+        albumAppear 1.1s ease 3.5s forwards,
+        albumFloat 5s ease-in-out 4.7s infinite;
 }
 
 .album img,
-.album video{
+.album video {
+    position: absolute;
+    inset: 0;
 
-    position:absolute;
-    inset:0;
+    width: 100%;
+    height: 100%;
 
-    width:100%;
-    height:100%;
+    object-fit: cover;
 
-    object-fit:cover;
-
-    border-radius:12px;
+    border-radius: 12px;
 
     box-shadow:
-        0 0 35px rgba(255,0,255,.25);
-
+        0 0 35px rgba(255, 0, 255, 0.25);
 }
 
-.album-video{
+.album-image {
+    z-index: 1;
 
-    opacity:0;
+    opacity: 1;
 
-    transition:opacity .35s ease;
-
+    transition: opacity 0.35s ease;
 }
 
-.album:hover{
+.album-video {
+    z-index: 2;
+
+    opacity: 0;
+
+    transition: opacity 0.35s ease;
+}
+
+.album:hover {
+    z-index: 20;
 
     transform:
-        scale(1.12)
-        translateY(-12px);
+        translateY(-12px)
+        scale(1.12);
 
-    z-index:20;
-
+    filter:
+        drop-shadow(0 0 18px rgba(255, 255, 255, 0.5))
+        drop-shadow(0 0 45px rgba(255, 0, 255, 0.85));
 }
 
-.album:hover .album-video{
-
-    opacity:1;
-
+.album:hover .album-image {
+    opacity: 0;
 }
 
-.album:hover .album-image{
-
-    opacity:0;
-
+.album:hover .album-video {
+    opacity: 1;
 }
 
-@keyframes albumFloat{
 
-    0%,100%{
+/* ==========================================
+   ALBUM ANIMATIONS
+========================================== */
 
-        transform:translateY(0);
+@keyframes albumAppear {
+    0% {
+        opacity: 0;
+        transform: scale(0.55);
 
+        filter:
+            brightness(4)
+            blur(14px)
+            drop-shadow(0 0 70px rgba(255, 255, 255, 1))
+            drop-shadow(0 0 120px rgba(255, 0, 255, 1));
     }
 
-    50%{
+    45% {
+        opacity: 1;
+        transform: scale(1.12);
 
-        transform:translateY(-10px);
+        filter:
+            brightness(2)
+            blur(4px)
+            drop-shadow(0 0 55px rgba(255, 255, 255, 0.9))
+            drop-shadow(0 0 95px rgba(255, 0, 255, 0.95));
+    }
 
+    100% {
+        opacity: 1;
+        transform: scale(1);
+
+        filter:
+            brightness(1)
+            blur(0)
+            drop-shadow(0 0 24px rgba(255, 0, 255, 0.45));
+    }
+}
+
+@keyframes albumFloat {
+    0%,
+    100% {
+        opacity: 1;
+        translate: 0 0;
+    }
+
+    50% {
+        opacity: 1;
+        translate: 0 -10px;
+    }
+}
+
+
+/* ==========================================
+   MOBILE HERO
+========================================== */
+
+@media screen and (max-width: 768px) {
+
+    .hero h1 {
+        font-size: 3.8rem;
+        letter-spacing: 6px;
+        white-space: nowrap;
+    }
+
+    .hero p {
+        margin-bottom: 32px;
+
+        font-size: 1.2rem;
+        letter-spacing: 1px;
+        white-space: nowrap;
+    }
+
+    .enter-button {
+        min-width: 250px;
+        padding: 18px 32px;
+
+        font-size: 1rem;
+    }
+
+}
+
+
+/* ==========================================
+   MOBILE ARTIST
+========================================== */
+
+@media screen and (max-width: 768px) {
+
+    .artist-background-video {
+        object-position: 28% center;
+    }
+
+    .artist-overlay {
+        background:
+            linear-gradient(
+                to bottom,
+                rgba(0, 0, 0, 0.08) 0%,
+                rgba(0, 0, 0, 0.18) 45%,
+                rgba(0, 0, 0, 0.45) 100%
+            );
+    }
+
+    .artist-content {
+        padding-top: 14vh;
+        padding-right: 24px;
+        padding-left: 24px;
+    }
+
+    .artist-text {
+        width: 52%;
+        max-width: 260px;
+
+        margin-left: auto;
+
+        text-align: left;
+    }
+
+    .artist-text h2 {
+        margin-bottom: 16px;
+
+        font-size: 3.1rem;
+        line-height: 1;
+    }
+
+    .artist-text h3 {
+        margin-bottom: 28px;
+
+        font-size: 2rem;
+        line-height: 1.3;
+    }
+
+    .artist-text p {
+        margin-bottom: 18px;
+
+        font-size: 1.2rem;
+        line-height: 1.7;
+    }
+
+    .discover-button {
+        display: block;
+
+        width: 100%;
+
+        margin-top: 28px;
+        padding: 18px 20px;
+
+        font-size: 1.1rem;
+        text-align: center;
+    }
+
+}
+
+
+/* ==========================================
+   MOBILE STORY
+========================================== */
+
+@media screen and (max-width: 768px) {
+
+    .story-background-video {
+        object-position: center center;
+    }
+
+    .story-content {
+        top: 8%;
+        padding: 0 16px;
+    }
+
+    .story-content h2 {
+        font-size: 2.8rem;
+        line-height: 1.05;
+        letter-spacing: 1px;
+    }
+
+    .story-content p {
+        margin-top: 14px;
+
+        font-size: 1rem;
+        line-height: 1.3;
+    }
+
+    .creation {
+        top: 27%;
+        left: 6%;
+
+        width: 145px;
+    }
+
+}
+
+
+/* ==========================================
+   REDUCED MOTION ACCESSIBILITY
+========================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
     }
 
 }
