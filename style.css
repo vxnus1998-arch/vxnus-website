@@ -533,3 +533,65 @@ transition-delay: 1.8s;
     z-index:1;
 
 }
+
+/* ==========================================
+   STORY TITLE
+========================================== */
+
+.story-content{
+
+    position:absolute;
+
+    top:8%;
+
+    left:50%;
+
+    transform:translateX(-50%);
+
+    width:100%;
+
+    z-index:3;
+
+    text-align:center;
+
+}
+
+.story-content h2{
+
+    font-size:5rem;
+
+    letter-spacing:3px;
+
+    color:white;
+
+    text-shadow:
+        0 0 18px rgba(255,255,255,.55),
+        0 0 45px rgba(255,0,255,.35);
+
+    opacity:0;
+
+    transform:translateY(24px);
+
+    animation:storyTitleFade 1.4s ease forwards;
+
+    animation-delay:.8s;
+
+}
+
+@keyframes storyTitleFade{
+
+    from{
+
+        opacity:0;
+        transform:translateY(24px);
+
+    }
+
+    to{
+
+        opacity:1;
+        transform:translateY(0);
+
+    }
+
+}
