@@ -121,3 +121,25 @@ if (storySection && storyIntro && storyLoop) {
 
     storyObserver.observe(storySection);
 }
+
+// ===== ALBUM HOVER VIDEO =====
+
+document.querySelectorAll(".album").forEach(album => {
+
+    const video = album.querySelector("video");
+
+    album.addEventListener("mouseenter", () => {
+
+        video.currentTime = 0;
+        video.play();
+
+    });
+
+    album.addEventListener("mouseleave", () => {
+
+        video.pause();
+        video.currentTime = 0;
+
+    });
+
+});
